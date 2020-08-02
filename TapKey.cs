@@ -10,13 +10,29 @@ namespace KeyTap
     {
         #region Data
 
+        public IKeyTapProvider Provider { get; }
+
         public string Device { get; }
 
         public string Id { get; }
 
         public string Name { get; }
 
-        public IKeyTapProvider Provider { get; }
+        #endregion
+
+        #region Constructors
+
+        public TapKey(
+            IKeyTapProvider provider,
+            string device = "Local",
+            string id = "Default",
+            string name = "Default")
+        {
+            Provider = provider;
+            Device = device;
+            Id = id;
+            Name = name;
+        }
 
         #endregion
 
