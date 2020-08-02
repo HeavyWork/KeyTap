@@ -9,5 +9,6 @@ namespace KeyTap
     public interface IKeyTapProvider : IDisposable, IKeyTapEventProvider
     {
         string Name { get; }
+        string Icon { get; }
     }
 }

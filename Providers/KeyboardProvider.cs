@@ -16,6 +16,8 @@ namespace KeyTap.Providers
 
         public string Name { get; } = "Keyboard";
 
+        public string Icon { get; } = "ControlAltDel";
+
         #endregion
 
         #region Core Data
@@ -39,7 +41,7 @@ namespace KeyTap.Providers
 
         private bool KeyFunc(bool isDown, Keys key)
         {
-            TapKey tapKey = new TapKey(Name, id: key.ToString(), name: $"Key {key.ToString()}");
+            TapKey tapKey = new TapKey(Name, Icon, id: key.ToString(), name: $"Key {key.ToString()}");
             if (_manager.ListenState == KeyTapListenState.Off) return false;
             if (_manager.ListenState == KeyTapListenState.ListOnly &&
                 !_manager.KeyList.Contains(tapKey))

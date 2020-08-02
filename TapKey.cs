@@ -16,6 +16,9 @@ namespace KeyTap
         public string Provider { get; }
 
         [JsonProperty]
+        public string Icon { get; }
+
+        [JsonProperty]
         public string Device { get; }
 
         [JsonProperty]
@@ -30,11 +33,13 @@ namespace KeyTap
 
         public TapKey(
             string provider,
+            string icon,
             string device = "Local",
             string id = "Default",
             string name = "Default")
         {
             Provider = provider;
+            Icon = icon;
             Device = device;
             Id = id;
             Name = name;
