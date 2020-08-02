@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace KeyTap
 {
-    public interface IKeyTapProvider
+    public interface IKeyTapProvider : IDisposable, IKeyTapEventProvider
     {
+        string Name { get; }
     }
 }
