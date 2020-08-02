@@ -69,21 +69,9 @@ namespace KeyTap
 
         public event EventHandler<TapKey> KeyUp;
 
-        private void ProviderOnKeyDown(object sender, TapKey e)
-        {
-            if (ListenState == KeyTapListenState.Off) return;
-            if (ListenState == KeyTapListenState.ListOnly &&
-                !KeyList.Contains(e)) return;
-            KeyDown?.Invoke(this, e);
-        }
+        private void ProviderOnKeyDown(object sender, TapKey e) => KeyDown?.Invoke(this, e);
 
-        private void ProviderOnKeyUp(object sender, TapKey e)
-        {
-            if (ListenState == KeyTapListenState.Off) return;
-            if (ListenState == KeyTapListenState.ListOnly &&
-                !KeyList.Contains(e)) return;
-            KeyUp?.Invoke(this, e);
-        }
+        private void ProviderOnKeyUp(object sender, TapKey e) => KeyUp?.Invoke(this, e);
 
         #endregion
 
