@@ -10,7 +10,7 @@ namespace KeyTap
     {
         #region Data
 
-        public IKeyTapProvider Provider { get; }
+        public string Provider { get; }
 
         public string Device { get; }
 
@@ -23,7 +23,7 @@ namespace KeyTap
         #region Constructors
 
         public TapKey(
-            IKeyTapProvider provider,
+            string provider,
             string device = "Local",
             string id = "Default",
             string name = "Default")
@@ -40,7 +40,7 @@ namespace KeyTap
 
         public override string ToString()
         {
-            return $"{Provider.Name}.{Device}.{Id}";
+            return $"{Provider}.{Device}.{Id}";
         }
 
         public override int GetHashCode()

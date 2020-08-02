@@ -39,7 +39,7 @@ namespace KeyTap.Providers
 
         private bool KeyFunc(bool isDown, Keys key)
         {
-            TapKey tapKey = new TapKey(this, id: key.ToString(), name: key.ToString());
+            TapKey tapKey = new TapKey(Name, id: key.ToString(), name: key.ToString());
             if (_manager.ListenState == KeyTapListenState.Off) return false;
             if (_manager.ListenState == KeyTapListenState.ListOnly &&
                 !_manager.KeyList.Contains(tapKey))
