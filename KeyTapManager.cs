@@ -52,7 +52,8 @@ namespace KeyTap
             KeyList.CollectionChanged += (sender, args) => OnPropertyChanged(nameof(KeyList));
             _providers = new IKeyTapProvider[]
             {
-                new KeyboardProvider(this)
+                new KeyboardProvider(this),
+                new MIDIProvider(this), 
             };
             foreach (IKeyTapProvider provider in _providers)
             {
