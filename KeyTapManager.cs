@@ -7,9 +7,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using KeyTap.Providers;
+using Newtonsoft.Json;
 
 namespace KeyTap
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public sealed class KeyTapManager
         : INotifyPropertyChanged, IDisposable, IKeyTapEventProvider
     {
@@ -37,6 +39,7 @@ namespace KeyTap
 
         #region Keylist
 
+        [JsonProperty]
         public ObservableCollection<TapKey> KeyList { get; }
 
         #endregion

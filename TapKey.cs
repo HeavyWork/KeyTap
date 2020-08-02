@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace KeyTap
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class TapKey
     {
         #region Data
 
+        [JsonProperty]
         public string Provider { get; }
 
+        [JsonProperty]
         public string Device { get; }
 
+        [JsonProperty]
         public string Id { get; }
 
+        [JsonProperty]
         public string Name { get; }
 
         #endregion
