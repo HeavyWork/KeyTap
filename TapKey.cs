@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace KeyTap
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public class TapKey
+    public class TapKey : IComparable, IComparable<TapKey>, IEquatable<TapKey>
     {
         #region Data
 
@@ -44,6 +44,17 @@ namespace KeyTap
 
         #region Methods
 
+        public int CompareTo(TapKey other)
+        {
+            if (other is null) return 1;
+            return GetHashCode().CompareTo(other.GetHashCode());
+        }
+
+        public bool Equals(TapKey other)
+        {
+            return other != null && GetHashCode() == other.GetHashCode();
+        }
+
         public override string ToString()
         {
             return $"{Provider}.{Device}.{Id}";
@@ -52,6 +63,12 @@ namespace KeyTap
         public override int GetHashCode()
         {
             return ToString().GetHashCode();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is null) return 1;
+            return GetHashCode().CompareTo(obj.GetHashCode());
         }
 
         public override bool Equals(object obj)
