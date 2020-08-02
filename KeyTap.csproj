@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="IKeyTapEventProvider.cs" />
     <Compile Include="IKeyTapProvider.cs" />
+    <Compile Include="Providers\MIDIProvider.cs" />
     <Compile Include="TapKey.cs" />
     <Compile Include="KeyTapManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
