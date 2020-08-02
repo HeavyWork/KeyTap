@@ -45,6 +45,8 @@
     <Compile Include="ITapKey.cs" />
     <Compile Include="KeyTapManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\KeyboardProvider.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
