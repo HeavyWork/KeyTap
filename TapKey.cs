@@ -10,13 +10,13 @@ namespace KeyTap
     {
         #region Data
 
-        string Type { get; }
+        public string Device { get; }
 
-        string Device { get; }
+        public string Id { get; }
 
-        string Id { get; }
+        public string Name { get; }
 
-        string Name { get; }
+        public IKeyTapProvider Provider { get; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace KeyTap
 
         public override string ToString()
         {
-            return $"{Type}.{Device}.{Id}";
+            return $"{Provider.Name}.{Device}.{Id}";
         }
 
         public override int GetHashCode()
@@ -34,7 +34,7 @@ namespace KeyTap
 
         public override bool Equals(object obj)
         {
-            return GetHashCode() == obj.GetHashCode();
+            return obj != null && GetHashCode() == obj.GetHashCode();
         }
 
         #endregion
