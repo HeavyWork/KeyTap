@@ -10,7 +10,7 @@ using KeyTap.Providers;
 
 namespace KeyTap
 {
-    public class KeyTapManager
+    public sealed class KeyTapManager
         : INotifyPropertyChanged, IDisposable, IKeyTapEventProvider
     {
         #region ListenState
@@ -31,10 +31,7 @@ namespace KeyTap
 
         #region Providers
 
-        private readonly IKeyTapProvider[] Providers = 
-        {
-            new KeyboardProvider()
-        };
+        private readonly IKeyTapProvider[] _providers;
 
         #endregion
 
@@ -50,7 +47,11 @@ namespace KeyTap
         {
             KeyList = new ObservableCollection<TapKey>();
             KeyList.CollectionChanged += (sender, args) => OnPropertyChanged(nameof(KeyList));
-            foreach (IKeyTapProvider provider in Providers)
+            _providers = new IKeyTapProvider[]
+            {
+                new KeyboardProvider(this)
+            };
+            foreach (IKeyTapProvider provider in _providers)
             {
                 provider.KeyDown += ProviderOnKeyDown;
                 provider.KeyUp += ProviderOnKeyUp;
@@ -87,7 +88,7 @@ namespace KeyTap
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -98,7 +99,7 @@ namespace KeyTap
 
         public void Dispose()
         {
-            foreach (IKeyTapProvider provider in Providers) provider.Dispose();
+            foreach (IKeyTapProvider provider in _providers) provider.Dispose();
         }
 
         #endregion
